@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ff9aa2, #ffc3a0);
+            overflow: hidden;
+            font-family: 'Patrick Hand SC', cursive;
+            color: #fff;
+            position: relative;
+        }
+
+        .birthday-message {
+            font-size: 6rem;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: 'Fredoka One', cursive;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border: 3px solid #ffeecc;
+            border-radius: 0;
+            display: inline-block;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .to-message {
+            position: absolute;
+            top: -50px;
+            left: -20px;
+            background: #FFFFE0;
+            padding: 0.7rem 1.2rem;
+            border: 2px solid #ff9aa2;
+            border-radius: 0;
+            font-size: 2rem;
+            color: #ff6f85;
+            font-family: 'Fredoka One', cursive;
+            transform: rotate(-15deg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .date {
+            font-size: 1.2rem;
+            color: #ffeecc;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .cake {
+            position: absolute;
+            font-size: 2rem;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -50px;
+                left: calc(10% + 80% * var(--random-x));
+            }
+
+            100% {
+                top: 100vh;
+                left: calc(10% + 80% * var(--random-x));
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            font-size: 2rem;
+            color: #fff;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        .sticker {
+            position: fixed;
+            top: 250px; /* 距离页面顶部 20px */
+            left: 300px; /* 距离页面左边 20px */
+            font-size: 2rem; /* 调整emoji的大小 */
+            z-index: 100; /* 确保贴纸在页面其他元素之上 */
+        }
+
+        .button {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            background: #ff9aa2;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Fredoka One', cursive;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+            .button:hover {
+                background: #ff6f85;
+            }
+
+        /* 背景半透明文字 */
+        .background-text {
+            position: absolute;
+            font-family: 'Patrick Hand SC', cursive;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+            /* 背景文字分布均匀，覆盖整片屏幕 */
+            .background-text:nth-child(1) {
+                top: 50%;
+                left: 15%;
+            }
+
+            .background-text:nth-child(2) {
+                top: 10%;
+                left: 30%;
+            }
+
+            .background-text:nth-child(3) {
+                top: 5%;
+                left: 60%;
+            }
+
+            .background-text:nth-child(4) {
+                top: 3%;
+                left: 8%;
+            }
+
+            .background-text:nth-child(5) {
+                top: 60%;
+                left: 28%;
+            }
+
+            .background-text:nth-child(6) {
+                top: 55%;
+                left: 70%;
+            }
+
+            .background-text:nth-child(7) {
+                top: 75%;
+                left: 8%;
+            }
+
+            .background-text:nth-child(8) {
+                top: 40%;
+                left: 5%;
+            }
+            
+            .background-text:nth-child(9) {
+                top: 85%; 
+                left: 60%;
+            }
+
+            .background-text:nth-child(10) {
+                top: 13%;
+                left: 65%;
+            }
+
+            .background-text:nth-child(11) {
+                top: 10%;
+                left: 10%;
+            }
+    </style>
+</head>
+<body>
+    <div class="birthday-message">
+        <div class="to-message">to老萌</div>
+        祝你生日快乐
+    </div>
+    <p class="date">2025/02/09</p>
+
+    <div class="sticker">🥰</div>
+
+    <button class="button" onclick="showBirthdayMessage()">点我点我</button>
+
+    <!-- 背景半透明文字 -->
+    <div class="background-text">今年到底送什么</div>
+    <div class="background-text">已经没有什么能打得过你上次送我的礼物了</div>
+    <div class="background-text">上次你的礼物太棒了吧阿西</div>
+    <div class="background-text">这bug到底咋整</div>
+    <div class="background-text">这bug我是真不会修凑合看吧😭😭</div>
+    <div class="background-text">我恭喜你发财~我恭喜你精彩~</div>
+    <div class="background-text">怎么会有人挑了半天实物礼物，最后啥都没买</div>
+    <div class="background-text">happy birthday</div>
+    <div class="background-text"> </div>
+    <div class="background-text"> </div>
+    <div class="background-text"> </div>
+
+    <!-- 使用 JavaScript 生成飘落的蛋糕和动态星星 -->
+    <script>
+        const emojis = ["🎂", "🍰", "🎈"];
+        const maxCakes = 30;
+        const maxStars = 30;
+
+        // 生成飘落的蛋糕
+        for (let i = 0; i < maxCakes; i++) {
+            const cake = document.createElement("div");
+            cake.className = "cake";
+            cake.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            cake.style.setProperty("--random-x", Math.random());
+            cake.style.animationDuration = `${Math.random() * 7 + 6}s`;
+            document.body.appendChild(cake);
+        }
+
+        // 生成动态星星
+        for (let i = 0; i < maxStars; i++) {
+            const star = document.createElement("div");
+            star.className = "sparkle";
+            star.textContent = Math.random() > 0.5 ? "✧" : "★";
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${Math.random() * 3 + 1.5}s`;
+            document.body.appendChild(star);
+        }
+
+        // 点击按钮后弹出窗口
+        function showBirthdayMessage() {
+            const newWindow = window.open("", "_blank", "width=600,height=400");
+            if (newWindow) {
+                newWindow.document.write(`
+                  <html>
+                    <head>
+                      <title>祝福信息</title>
+                      <style>
+                        body {
+                          font-family: 'Patrick Hand SC', cursive;
+                          font-size: 1.5rem;
+                          line-height: 1.8;
+                          color: #333;
+                          background-color: #fdf5e6;
+                          padding: 2rem;
+                          margin: 0;
+                        }
+                      </style>
+                    </head>
+                    <body>
+                      <p>这辈子也没想到专业技能会这样子派上用场。</p >
+                      <p>其实好像还能做更复杂的的东西，但是能力实在有限，弄了半天全是报错就摆了，明年，明年一定给你做个更牛的！</p >
+                      <p>虽然每年都约出去两三次但总感觉这样的频率作为维持友谊来说还是太低（？）但是准备礼物的时间又很好的弥补了这一点（？）</p >
+                      <p>话说我刚才翻东西翻到了我初中的日记本，超怀念的，我还在日记本里吐槽什么考试不好要被大石说了什么的🥰当时的痛苦在现在看来简直是小快乐（仔细一想其实好像还是挺痛苦的只是怀念初中罢了）</p >
+                         <p>总而言之祝你生日快乐！二月的生日真好呀可以和家人朋友一起庆祝🥳等你长大了哪天能举办生日宴的话一定要带我一个（？）我就是住在天涯海角不管春运飞机票多贵我也会来的（正色）</p >
+                         <p>新的一年也要继续做好朋友哦！！（握拳）</p >
+                         <p>               老宸</p >
+                        </body>
+                      </html>
+                    `);
+                newWindow.document.close();
+            }
+        }
+    </script>
+</body>
+</html>
